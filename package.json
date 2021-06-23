@@ -73,13 +73,5 @@
     "svgo": "1.2.0",
     "vue-cli-plugin-electron-builder": "^2.0.0",
     "vue-template-compiler": "2.6.11"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
-  "engines": {
-    "node": ">=8.9",
-    "npm": ">= 3.0.0"
   }
 }
