@@ -9,6 +9,9 @@ protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: tru
 
 async function createWindow() {
   // Create the browser window.
+  const baseDirPath = path.resolve(__dirname, '..')
+  console.log('11111')
+  console.log('Creating a linked script..', baseDirPath)
   let size = screen.getPrimaryDisplay().workAreaSize
   let width = parseInt(size.width * 0.9)
   let height = parseInt(size.height * 0.9)
@@ -26,8 +29,8 @@ async function createWindow() {
       enableRemoteModule: true
       // preload: renderProcessApi
       // preload: path.resolve(__dirname, 'preload.js')
-    },
-    show: false
+    }
+    // show: false
   })
 
   win.on('ready-to-show', function() {
