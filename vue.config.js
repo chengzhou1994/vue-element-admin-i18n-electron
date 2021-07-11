@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
+const defaultSettings = require('./src/renderer/settings.js')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -38,13 +38,16 @@ module.exports = {
     },
     before: require('./mock/mock-server.js')
   },
-  configureWebpack: {
+  configureWebpack: config => {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@': resolve('src')
+    config.entry.app = './src/renderer/main.js'
+    return {
+      name: name,
+      resolve: {
+        alias: {
+          '@': resolve('src/renderer')
+        }
       }
     }
   },
@@ -67,12 +70,12 @@ module.exports = {
     // set svg-sprite-loader
     config.module
       .rule('svg')
-      .exclude.add(resolve('src/icons'))
+      .exclude.add(resolve('src/renderer/icons'))
       .end()
     config.module
       .rule('icons')
       .test(/\.svg$/)
-      .include.add(resolve('src/icons'))
+      .include.add(resolve('src/renderer/icons'))
       .end()
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
@@ -122,7 +125,7 @@ module.exports = {
   //
   pluginOptions: {
     electronBuilder: {
-      // mainProcessFile: 'src/background.js',
+      mainProcessFile: 'src/main/background.js',
       removeElectronJunk: false, // 移除Electron 有时会产生一堆垃圾输出
       // 打包参数配置
       builderOptions: {
