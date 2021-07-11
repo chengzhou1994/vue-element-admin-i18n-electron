@@ -95,6 +95,22 @@ module.exports = {
           }
         ])
         .end()
+      /*      config.plugin('copy').tap(args => [
+        [
+          {
+            from: './preload',
+            to: 'preload',
+            toType: 'dir',
+            ignore: ['index.html', '.DS_Store']
+          },
+          {
+            from: './public',
+            to: 'public',
+            toType: 'dir',
+            ignore: ['index.html', '.DS_Store']
+          }
+        ]
+      ]) */
       config.optimization.splitChunks({
         chunks: 'all',
         cacheGroups: {
