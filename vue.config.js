@@ -133,6 +133,12 @@ module.exports = {
         productName: 'vue-element-admin', // 项目名 这也是生成的exe文件的前缀名
         icon: './public/icons/.ico',
         files: ['**/*', 'static/*'], // 打包的资源无法包含 build 目录
+        extraFiles: {
+          // from: './preload',
+          // to: 'preload'
+          // from: 'preload/preload.js',
+          // to: 'preload'
+        },
         asar: true, //查看打包后的目录结构
         copyright: 'chengzhou', //版权  信息
         compression: 'store', // "store" | "normal"| "maximum" 打包压缩情况(store 相对较快)，store 39749kb, maximum 39186kb
@@ -173,7 +179,8 @@ module.exports = {
           installerHeaderIcon: './public/icons/app.ico', // 安装时头部图标
           createDesktopShortcut: true, // 创建桌面图标
           createStartMenuShortcut: true, // 创建开始菜单图标
-          shortcutName: 'chengzhou' // 图标名称
+          shortcutName: 'chengzhou', // 图标名称
+          license: './LICENSE.txt'
         },
         nodeIntegration: true, // 设置开启nodejs环境
         // contextIsolation: false, // electron为12x版本新增此行
