@@ -131,6 +131,9 @@ module.exports = {
         productName: 'vue-element-admin', // 项目名 这也是生成的exe文件的前缀名
         icon: './public/icons/.ico',
         files: ['**/*', 'static/*'], // 打包的资源无法包含 build 目录
+        directories: {
+          output: './dist' //输出文件路径
+        },
         extraFiles: {
           // from: './preload',
           // to: 'preload'

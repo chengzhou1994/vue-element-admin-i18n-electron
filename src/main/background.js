@@ -1,12 +1,10 @@
 'use strict'
-const path = require('path')
+
 import { app, protocol, BrowserWindow, session, globalShortcut, ipcMain, Tray, screen } from 'electron'
-// import { preload } from 'preload/preload.js'
 const isDevelopment = process.env.NODE_ENV !== 'production'
-// const renderProcessApi = path.join(__dirname, '/preload/preload.js')
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
-
+const path = require('path')
 async function createWindow() {
   // Create the browser window.
   const baseDirPath = path.resolve(__dirname, '..')
@@ -16,8 +14,15 @@ async function createWindow() {
   let width = parseInt(size.width * 0.9)
   let height = parseInt(size.height * 0.9)
   const win = new BrowserWindow({
+    devTools: true,
     width: width,
     height: height,
+    movable: true, //可否移动
+    minimizable: true, //可否最小化
+    maximizable: true, //可否最大化
+    fullscreen: false, //MAC下是否可以全屏
+    skipTaskbar: false, //在任务栏中显示窗口
+    acceptFirstMouse: true, //是否允许单击页面来激活窗口
     // frame: false,
     // titleBarStyle: 'hiddenInset', // macOS 下独有的无边框 返回一个隐藏标题栏的全尺寸内容窗口，在左上角仍然有标准的窗口控制按钮（俗称“红绿灯”）
     webPreferences: {
