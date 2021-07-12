@@ -27,8 +27,6 @@ async function createWindow() {
       contextIsolation: false,
       webSecurity: false,
       enableRemoteModule: true
-      // preload: renderProcessApi
-      // preload: path.resolve(__dirname, 'preload.js')
     }
     // show: false
   })
