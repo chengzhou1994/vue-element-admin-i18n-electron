@@ -18,8 +18,8 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: width,
     height: height,
-    frame: false,
-    titleBarStyle: 'hiddenInset', // macOS 下独有的无边框 返回一个隐藏标题栏的全尺寸内容窗口，在左上角仍然有标准的窗口控制按钮（俗称“红绿灯”）
+    // frame: false,
+    // titleBarStyle: 'hiddenInset', // macOS 下独有的无边框 返回一个隐藏标题栏的全尺寸内容窗口，在左上角仍然有标准的窗口控制按钮（俗称“红绿灯”）
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
