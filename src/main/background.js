@@ -2,12 +2,15 @@
 
 import { app, protocol, BrowserWindow, session, globalShortcut, ipcMain, Tray, screen } from 'electron'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+global.appDirname = __dirname
+
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 const path = require('path')
 async function createWindow() {
   // Create the browser window.
   const baseDirPath = path.resolve(__dirname, '..')
+
   console.log('11111')
   console.log('Creating a linked script..', baseDirPath)
   let size = screen.getPrimaryDisplay().workAreaSize
@@ -17,12 +20,14 @@ async function createWindow() {
     devTools: true,
     width: width,
     height: height,
+    icon: path.resolve(__dirname, './logo.png'),
     movable: true, //可否移动
     minimizable: true, //可否最小化
     maximizable: true, //可否最大化
     fullscreen: false, //MAC下是否可以全屏
     skipTaskbar: false, //在任务栏中显示窗口
     acceptFirstMouse: true, //是否允许单击页面来激活窗口
+    show: false,
     // frame: false,
     // titleBarStyle: 'hiddenInset', // macOS 下独有的无边框 返回一个隐藏标题栏的全尺寸内容窗口，在左上角仍然有标准的窗口控制按钮（俗称“红绿灯”）
     webPreferences: {
@@ -31,9 +36,9 @@ async function createWindow() {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: false,
       webSecurity: false,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      webviewTag: true // Boolean (可选) - 是否启用 <webview> tag标签. 默认值为 false.
     }
-    // show: false
   })
 
   win.on('ready-to-show', function() {

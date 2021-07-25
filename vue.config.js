@@ -181,7 +181,8 @@ module.exports = {
           createDesktopShortcut: true, // 创建桌面图标
           createStartMenuShortcut: true, // 创建开始菜单图标
           shortcutName: 'chengzhou', // 图标名称
-          license: './LICENSE.txt'
+          license: './LICENSE.txt',
+          guid: ''
         },
         nodeIntegration: true, // 设置开启nodejs环境
         // contextIsolation: false, // electron为12x版本新增此行
